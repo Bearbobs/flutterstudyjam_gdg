@@ -7,7 +7,7 @@
 
       YourName - YourEmailAddress
     
-      eg: AnujKapoor - kapoor.anuj0@gmail.com
+      eg: AnujKapoor-kapoor.anuj0@gmail.com
       
 3.) Push Your Code inside the folder.
 
