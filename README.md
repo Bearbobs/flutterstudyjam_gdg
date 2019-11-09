@@ -5,7 +5,7 @@
 
 2.) create a new folder named as:
 
-      YourName - YourEmailAddress
+      YourName-YourEmailAddress
     
       eg: AnujKapoor-kapoor.anuj0@gmail.com
       
