@@ -1,1 +1,3 @@
-# flutterstudyjam_gdgranchi
+# FlutterStudyJam GDG_Ranchi.
+
+## How to contribute
