@@ -1,112 +1,52 @@
 import 'package:flutter/material.dart';
+import 'package:audioplayers/audio_cache.dart';
 
-void main() => runApp(MyApp());
-
-class MyApp extends StatefulWidget {
-  @override
-  _MyAppState createState() => _MyAppState();
+void main() {
+  runApp(XylophoneApp());
 }
 
-class _MyAppState extends State<MyApp> {
-  bool x = false;
-  Color favColor = Colors.black;
+class XylophoneApp extends StatelessWidget {
+  void playSound(int soundNumber) {
+    final player = AudioCache();
+    player.play('note$soundNumber.wav');
+  }
 
+  Expanded buildKey({Color color, int soundNumber}) {
+    return Expanded(
+      child: FlatButton(
+          color: color,
+          onPressed: () {
+            playSound(soundNumber);
+          }),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Welcome to Flutter',
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Instagram', style: TextStyle(color: Colors.black)),
-          leading: Icon(Icons.camera_alt, color: Colors.black),
-          backgroundColor: Colors.white,
-          actions: <Widget>[
-            Icon(
-              Icons.tv,
-              color: Colors.black,
-            ),
-            SizedBox(
-              width: 10.0,
-            ),
-            Icon(
-              Icons.send,
-              color: Colors.black,
-            ),
-          ],
+          title: Text('XyloPhone'),
+          backgroundColor: Colors.black,
+          centerTitle: true,
         ),
-        body: ListView.builder(
-          physics: BouncingScrollPhysics(),
-          itemBuilder: (BuildContext context, int index) {
-            return buildInstagramTile();
-          },
-          itemCount: 10,
+        backgroundColor: Colors.black,
+        body: SafeArea(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              buildKey(color: Colors.red, soundNumber: 1),
+              buildKey(color: Colors.orange, soundNumber: 2),
+              buildKey(color: Colors.yellow, soundNumber: 3),
+              buildKey(color: Colors.green, soundNumber: 4),
+              buildKey(color: Colors.blue, soundNumber: 5),
+              buildKey(color: Colors.indigo, soundNumber: 6),
+              buildKey(color: Colors.purple, soundNumber: 7),
+            ],
+          ),
         ),
       ),
-    );
-  }
-
-  Widget buildInstagramTile() {
-    return Column(
-      children: <Widget>[
-        ListTile(
-          leading: Image.network(
-              'https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80'),
-          title: Text('Avinash Mallik'),
-          trailing: Icon(Icons.more_horiz),
-        ),
-        SizedBox(
-          height: 10.0,
-        ),
-        Image.network(
-          'https://images.pexels.com/photos/67636/rose-blue-flower-rose-blooms-67636.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-          height: 200.0,
-          width: double.infinity,
-          fit: BoxFit.cover,
-        ),
-        Row(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Row(
-
-              children: <Widget>[
-                IconButton(
-
-                  icon: Icon(
-                    Icons.favorite_border,
-                    color:favColor,
-                    ),
-
-                  onPressed: () {
-                  setState(() {
-                    if(x) {
-                      favColor = Colors.black;
-                      x = false;
-                    }else{
-                      favColor = Colors.red;
-                      x = true;
-                    }
-                  });
-
-                  },
-
-
-                ),
-                SizedBox(
-                  width: 8,
-                ),
-                Icon(Icons.mode_comment),
-                SizedBox(
-                  width: 8,
-                ),
-                Icon(Icons.share),
-              ],
-            ),
-            Icon(Icons.bookmark_border),
-          ],
-        ),
-      ],
     );
   }
 }
