@@ -1,4 +1,4 @@
-# FlutterStudyJam GDG_Ranchi.
+# FlutterStudyJam GDG.
 
 ## How to contribute
 1.) Fork the project
